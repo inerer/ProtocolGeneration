@@ -7,4 +7,5 @@ public class People
     public string? MiddleName { get; set; }
     public string? Role { get; set; }
     public string? FullName => $"{LastName} {FirstName} {MiddleName}, {Role}";
+    public string? FIO => $"{LastName} {FirstName[0]}. {MiddleName[0]}.";
 }

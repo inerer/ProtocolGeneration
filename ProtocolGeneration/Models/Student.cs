@@ -1,4 +1,7 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
+using Cyriller;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ProtocolGeneration.Models;
 
@@ -32,4 +35,56 @@ public class Student
             
         }
     }
+
+    public string? FullName => $"{ LastName} {FirstName} {MiddleName}";
+    
+    public string? Theme { get; set; }
+    
+    public string? MainTeacher { get; set; }
+    
+    public int? CountList { get; set; }
+    
+    public int? CountGrap { get; set; }
+    
+    public string? Opinion { get; set; }
+    
+    public string? Review { get; set; }
+    
+    public int? Group { get; set; }
+    
+    public string? FirstQuestion { get; set; }
+    
+    public string? SecondQuestion { get; set; }
+    
+    public string? ThirdQuestion { get; set; }
+    
+    public string? SpecialOpinion { get; set; }
+    
+    public int Gender { get; set; }
+    
+    public DateTime? Date { get; set; }
+    
+    public int VKRGrade { get; set; }
+    
+    public DateTime? DemoDate { get; set; }
+    
+    public string? Qualification { get; set; }
+    
+    public string? DiplomCathegory { get; set; }
+
+    public string? WordGrade
+    {
+        get
+        {
+            if (Grade == 5)
+                return $"{Grade}(отлично)";
+            if (Grade == 4)
+                return $"{Grade}(хорошо)";
+            if (Grade == 3)
+                return $"{Grade}(удолетворительно)";
+            return null;
+
+        }
+    }
+    
 }
