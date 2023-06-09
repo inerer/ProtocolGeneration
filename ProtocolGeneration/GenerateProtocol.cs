@@ -594,6 +594,16 @@ public class GenerateProtocol
             .UnderlineColor(Color.Black)
             .Color(Color.White);
         
+        paragraph1.AppendLine("\t\t\t\t\t\t Государственное бюджетное\n\t\t\t\t\t\tпрофессиональное образовательное \n\t\t\t\t\t\tучреждение Московской области\n\t\t\t\t\t\t«Серпуховский колледж», Московская\n\t\t\t\t\t\t область, г. Серпухов, пос. Большевик,\n \t\t\t\t\t\t ")
+            .Bold()
+            .Font("Times New Roman")
+            .FontSize(12);
+        paragraph1.Append("ул.Ленина, д.52")
+            .Bold()
+            .Font("Times New Roman")
+            .FontSize(12)
+            .UnderlineColor(Color.Black);
+        
         paragraph1.AppendLine("Центр проведения демонстрационного экзамена, адрес:")
             .Bold()
             .Font("Times New Roman")
@@ -1000,7 +1010,7 @@ public class GenerateProtocol
 
     }
 
-    public void ThirdProtocol(int counter, string specialty, Student student, People mainPeople, People deputyPeople, List<People> peoples, int voteYes, int voteNo, int voteMaybe, People secretaryPeople)
+    public void ThirdProtocol(int counter, string specialty, Student student, People mainPeople, People deputyPeople, List<People> peoples, People secretaryPeople)
     {
         CyrName cyrName = new Cyriller.CyrName();
 
@@ -1291,7 +1301,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
 
-        paragraph8.Append($"{voteYes}")
+        paragraph8.Append($"{student.voteYes}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);
@@ -1304,7 +1314,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
        
-        paragraph8.Append($"{voteNo}")
+        paragraph8.Append($"{student.voteNo}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);
@@ -1317,7 +1327,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
         
-        paragraph8.Append($"{voteMaybe}")
+        paragraph8.Append($"{student.voteMaybe}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);
@@ -1698,7 +1708,7 @@ public class GenerateProtocol
 
     }
 
-    public void FifthProtocol(int counter,string specialty, People mainPeople, People deputyPeople, List<People> peoples, Student student, People secretaryPeople, int voteYes, int voteMaybe, int voteNo)
+    public void FifthProtocol(int counter,string specialty, People mainPeople, People deputyPeople, List<People> peoples, Student student, People secretaryPeople)
     {
         CyrName cyrName = new Cyriller.CyrName();
         
@@ -1867,6 +1877,23 @@ public class GenerateProtocol
             .FontSize(12)
             .Font("Times New Roman");
 
+        paragraph5.AppendLine("Студент(ка)      ")
+            .FontSize(12)
+            .Font("Times New Roman");
+
+        paragraph5.Append($"{student.FullName}")
+            .FontSize(12)
+            .Font("Times New Roman")
+            .UnderlineColor(Color.Black);
+
+        paragraph5.Append("\n\t\t\t\tФ.И.О.")
+            .FontSize(6)
+            .Font("Times New Roman");
+
+        paragraph5.AppendLine("по итогам государственной аттестации получил оценку")
+            .FontSize(12)
+            .Font("Times New Roman");
+
         paragraph5.AppendLine("Присвоить студенту(ке)\t")
             .Font("Times New Roman")
             .FontSize(12);
@@ -1913,7 +1940,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
 
-        paragraph8.Append($"{voteYes}")
+        paragraph8.Append($"{student.voteYes}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);
@@ -1926,7 +1953,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
        
-        paragraph8.Append($"{voteNo}")
+        paragraph8.Append($"{student.voteNo}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);
@@ -1939,7 +1966,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
         
-        paragraph8.Append($"{voteMaybe}")
+        paragraph8.Append($"{student.voteMaybe}")
             .UnderlineColor(Color.Black)
             .Font("Times New Roman")
             .FontSize(12);

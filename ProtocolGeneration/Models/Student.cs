@@ -87,4 +87,10 @@ public class Student
         }
     }
     
+    public int voteYes { get; set; }
+    
+    public int voteNo { get; set; }
+    
+    public int voteMaybe { get; set; }
+    
 }
