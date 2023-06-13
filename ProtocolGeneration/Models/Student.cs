@@ -91,11 +91,11 @@ public class Student
     {
         get
         {
-            if (Grade == 5)
+            if (VKRGrade == 5)
                 return $"{VKRGrade}(отлично)";
-            if (Grade == 4)
+            if (VKRGrade == 4)
                 return $"{VKRGrade}(хорошо)";
-            if (Grade == 3)
+            if (VKRGrade == 3)
                 return $"{VKRGrade}(удолетворительно)";
             return null;
         }
