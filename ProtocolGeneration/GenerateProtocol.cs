@@ -1072,9 +1072,10 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
 
-        paragraph20.AppendLine($"На тему \t{student.Theme}")
+        paragraph20.AppendLine($"На тему \t«{student.Theme}»")
             .FontSize(12)
-            .Font("Times New Roman");
+            .Font("Times New Roman")
+            .UnderlineColor(Color.Black);
 
         paragraph20.AppendLine($"Выпускная квалификационная работы выполнена под руководством\n{student.MainTeacher}")
             .FontSize(12)
@@ -1748,7 +1749,7 @@ public class GenerateProtocol
             .Alignment = Alignment.center;
         
         paragraph.AppendLine(
-                $"Заседания Государственной экзаменационной комиссии\nпо специальности {specialty}\nО результатах сдачи государственной итоговой аттестации, присвоенииквалификации студенту по результатам государственной итоговой аттестации и выдаче диплома о среднем профессиональном образовании")
+                $"Заседания Государственной экзаменационной комиссии\nпо специальности {specialty}\nО результатах сдачи государственной итоговой аттестации, присвоении квалификации студенту по результатам государственной итоговой аттестации и выдаче диплома о среднем профессиональном образовании")
             .Bold()
             .FontSize(12)
             .Font("Times New Roman")
