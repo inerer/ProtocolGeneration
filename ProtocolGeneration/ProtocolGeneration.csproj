@@ -21,8 +21,17 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.18" />
         <PackageReference Include="DocX" Version="2.4.0" />
         <PackageReference Include="EPPlus" Version="6.0.3" />
+        <PackageReference Include="MessageBox.Avalonia" Version="2.0.0" />
         <PackageReference Include="Miyconst.Cyriller" Version="0.1.1" />
         <PackageReference Include="NameCaseLib" Version="0.4.2" />
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\add_FILL0_wght400_GRAD0_opsz48.png" />
+      <AvaloniaResource Include="Resources\add_FILL0_wght400_GRAD0_opsz48.png" />
+      <None Remove="Resources\logo (1).png" />
+      <None Remove="Resources\log.png" />
+      <AvaloniaResource Include="Resources\log.png" />
     </ItemGroup>
 </Project>

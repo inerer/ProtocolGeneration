@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Cyriller;
 using Cyriller.Model;
 using ProtocolGeneration.Models;
@@ -12,20 +15,55 @@ namespace ProtocolGeneration;
 
 public partial class MainWindow : Window
 {
+    private string initialData2;
     public MainWindow()
     {
         InitializeComponent();
+    }
+
+    private async Task Save()
+    {
+        var dialog = new OpenFileDialog();
+        dialog.Filters?.Add(new FileDialogFilter() 
+         
+            {Name = "Text", Extensions = {"csv"}});
+        var result = await dialog.ShowAsync(this);
+        if (result != null)
+        {
+            Generate(result[0]);
+        }
+    }
+
+    private async void AddFirstPathButton_OnClick(object? sender, RoutedEventArgs e)
+    { 
+        try
+        {
+            await Save();
+        }
+        catch(Exception c)
+        {
+         var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+                .GetMessageBoxStandardWindow("Ошибка", "При генерации произошла ошибка," +
+                                                       " скорее всего вы выбрали не подходящий файл");
+         await messageBoxStandardWindow.Show();
+        }
+       
+    }
+
+    private void Generate(string data2)
+    {
         var generateProtocol = new GenerateProtocol();
+        List<Student> students = new List<Student>();
+       
 
         // _generateProtocol.GenerateFirstProtocol(1, "09.02.07 Информационные системы и программирование", mainPeople, secondPeople, peoples, students, 8, 0, 0, people );
         // _generateProtocol.ThirdProtocol(1, "09.02.07 Информационные системы и программировани", student, mainPeople, secondPeople, peoples, 8, 0, 0 , people);
         // _generateProtocol.FourthProtocol(1,"09.02.07 Информационные системы и программировани", mainPeople, secondPeople, peoples, people, 8, 0, 0 );
-        string initialData2 = @"C:\Users\arshi\Downloads\Книга1.csv";
-        string initialData = @"C:\Users\arshi\Downloads\Книга2.csv";
+        initialData2 = data2;
         string[] initialDataRows2 = File.ReadAllLines(initialData2, Encoding.UTF8);
-        string[] initialDataRows = File.ReadAllLines(initialData,Encoding.UTF8);
-        string resultDirectoryPath = Path.Combine(Environment.CurrentDirectory, "output");
-        
+        int count = Convert.ToInt32(initialDataRows2[0].Split(';')[21]);
+        int dateStart = Convert.ToInt32(initialDataRows2[0].Split(';')[22]);
+       
         People secretaryPeople = new People()
         {
             FirstName = "Денис",
@@ -49,22 +87,6 @@ public partial class MainWindow : Window
             Role = "заместитель директора по  учебно-производственной работе ГБПОУ МО «Серпуховский колледж»"
         };
 
-
-        List<People> peoples = new List<People>();
-        foreach (var item in initialDataRows)
-        {
-            People p = new People()
-            {
-                FirstName = item.Split(';')[0],
-                LastName = item.Split(';')[1],
-                MiddleName = item.Split(';')[2],
-                Role = item.Split(';')[3]
-            };
-            peoples.Add(p);
-        }
-
-        List<Student> students = new List<Student>();
-        
         foreach (var item in initialDataRows2)
         {
             Student student = new Student()
@@ -84,54 +106,118 @@ public partial class MainWindow : Window
                 SecondQuestion = item.Split(';')[12],
                 ThirdQuestion = item.Split(';')[13],
                 SpecialOpinion = item.Split(';')[14],
-                Date = Convert.ToDateTime(item.Split(';')[15]),
-                DemoDate = Convert.ToDateTime(item.Split(';')[16])
+                Date = DateOnly.Parse(item.Split(';')[15]),
+                DemoDate = DateOnly.Parse(item.Split(';')[16]),
+                VKRGrade = int.Parse(item.Split(';')[17]),
+                voteYes = int.Parse(item.Split(';')[18]),
+                voteMaybe = int.Parse(item.Split(';')[19]),
+                voteNo = int.Parse(item.Split(';')[20])
             };
             students.Add(student);
 
-           
-            generateProtocol.ThirdProtocol(1, 
+            count++;
+            generateProtocol.ThirdProtocol(count, 
                 "09.02.07 Информационные системы и программирование",
                 student,
                 mainPeople,
                 deputyPeople,
-                peoples,
-                secretaryPeople);
+                Peoples(),
+                secretaryPeople,
+                dateStart);
+            count++;
             
-            generateProtocol.FifthProtocol(1, 
+            generateProtocol.FifthProtocol(count, 
                 "09.02.07 Информационные системы и программирование",
                 mainPeople,
                 deputyPeople,
-                peoples,
+                Peoples(),
                 student,
-                secretaryPeople
-                );
+                secretaryPeople,
+                dateStart);
         } 
-        
-        generateProtocol.GenerateSecondProtocol(1
+        count = Convert.ToInt32(initialDataRows2[0].Split(';')[21]);
+        generateProtocol.GenerateSecondProtocol(count
             ,"09.02.07 Информационные системы и программирование"
             ,mainPeople
             ,deputyPeople
-            ,peoples
+            ,Peoples()
             ,students
             ,8
             ,0
             ,0
-            ,secretaryPeople);
+            ,secretaryPeople,
+            dateStart);
         
         generateProtocol.FourthProtocol(1
             ,"09.02.07 Информационные системы и программирование"
             ,mainPeople
             ,deputyPeople
-            ,peoples
+            ,Peoples()
             ,secretaryPeople
             ,8
             ,0
-            ,0);
-        
-        
-            
-           
-       
+            ,0,
+            dateStart);
+        var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+            .GetMessageBoxStandardWindow("Поздравляю!", "Протоколы сгенерированы!");
+        messageBoxStandardWindow.Show();
+    }
+
+    private List<People> Peoples()
+    {
+        List<People> peoples = new List<People>()
+        {
+            new People()
+            {
+                LastName = "Черникова",
+                FirstName = "Лилия",
+                MiddleName = "Валентиновка",
+                Role = "Преподаватель ГБПОУ МО «Серпуховский колледж»"
+            },
+            new People()
+            {
+                LastName = "Головин",
+                FirstName = "Денис",
+                MiddleName = "Викторович",
+                Role = "Преподаватель ГБПОУ МО «Серпуховский колледж»"
+            },
+            new People()
+            {
+                LastName = "Бурцев",
+                FirstName = "Павел",
+                MiddleName = "Константинович",
+                Role = "Преподаватель ГБПОУ МО «Серпуховский колледж»"
+            },
+            new People()
+            {
+                LastName = "Золотухина",
+                FirstName = "Ирина",
+                MiddleName = "Игоревна",
+                Role = "Специалист поддержки, ООО«Авито Тех»"
+            },
+            new People()
+            {
+                LastName = "Кривцов",
+                FirstName = "Павел",
+                MiddleName = "Николаевич",
+                Role = "старший, преподаватель кафедры информационных технологий Филиал «Протвино» государственного" +
+                       " университета «Дубна»"
+            },
+            new People()
+            {
+                LastName = "Архипова",
+                FirstName = "Светлана",
+                MiddleName = "Станиславовна",
+                Role = "старший специалист АНО «Институт инженерной физики»"
+            },
+            new People()
+            {
+                LastName = "Фаст",
+                FirstName = "Владимир",
+                MiddleName = "Владимирович",
+                Role = "инженер-программист, ИП Юсупов Б.И."
+            }
+        };
+        return peoples;
     }
 }

@@ -62,11 +62,11 @@ public class Student
     
     public int Gender { get; set; }
     
-    public DateTime? Date { get; set; }
+    public DateOnly Date { get; set; }
     
     public int VKRGrade { get; set; }
     
-    public DateTime? DemoDate { get; set; }
+    public DateOnly? DemoDate { get; set; }
     
     public string? Qualification { get; set; }
     
@@ -84,6 +84,20 @@ public class Student
                 return $"{Grade}(удолетворительно)";
             return null;
 
+        }
+    }
+
+    public string? VKRWordGrade
+    {
+        get
+        {
+            if (Grade == 5)
+                return $"{VKRGrade}(отлично)";
+            if (Grade == 4)
+                return $"{VKRGrade}(хорошо)";
+            if (Grade == 3)
+                return $"{VKRGrade}(удолетворительно)";
+            return null;
         }
     }
     

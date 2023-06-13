@@ -6,4 +6,47 @@
         x:Class="ProtocolGeneration.MainWindow"
         Title="ProtocolGeneration">
     
+        <Grid ShowGridLines="True">
+            
+            <Grid.RowDefinitions>
+                
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="80*"/>
+                
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                <Image Source = "Resources/log.png"
+                       Height="100"
+                       Width="100"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                
+                <TextBlock Width="30"
+                           Height="30"
+                           Name="FirstPathTextBlock"/>
+                
+                
+                <Button Name="AddFirstPathButton"
+                        Click="AddFirstPathButton_OnClick">
+                    <Image Name="AddImage"
+                           Source="Resources/add_FILL0_wght400_GRAD0_opsz48.png"
+                           Height="30"
+                           Width="30"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5"
+                    />
+                </Button>
+                
+                
+               
+            </StackPanel>
+            
+        </Grid>
 </Window>
