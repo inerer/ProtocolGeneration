@@ -61,8 +61,8 @@ public partial class MainWindow : Window
         // _generateProtocol.FourthProtocol(1,"09.02.07 Информационные системы и программировани", mainPeople, secondPeople, peoples, people, 8, 0, 0 );
         initialData2 = data2;
         string[] initialDataRows2 = File.ReadAllLines(initialData2, Encoding.UTF8);
-        int count = Convert.ToInt32(initialDataRows2[0].Split(';')[21]);
-        int dateStart = Convert.ToInt32(initialDataRows2[0].Split(';')[22]);
+        int count = Convert.ToInt32(initialDataRows2[0].Split(';')[22]);
+        int dateStart = Convert.ToInt32(initialDataRows2[0].Split(';')[23]);
        
         People secretaryPeople = new People()
         {
@@ -111,7 +111,8 @@ public partial class MainWindow : Window
                 VKRGrade = int.Parse(item.Split(';')[17]),
                 voteYes = int.Parse(item.Split(';')[18]),
                 voteMaybe = int.Parse(item.Split(';')[19]),
-                voteNo = int.Parse(item.Split(';')[20])
+                voteNo = int.Parse(item.Split(';')[20]),
+                DiplomCathegory = item.Split(';')[21]
             };
             students.Add(student);
 
@@ -126,38 +127,38 @@ public partial class MainWindow : Window
                 dateStart);
             count++;
             
-            generateProtocol.FifthProtocol(count, 
-                "09.02.07 Информационные системы и программирование",
-                mainPeople,
-                deputyPeople,
-                Peoples(),
-                student,
-                secretaryPeople,
-                dateStart);
+                // generateProtocol.FifthProtocol(count, 
+                // "09.02.07 Информационные системы и программирование",
+                // mainPeople,
+                // deputyPeople,
+                // Peoples(),
+                // student,
+                // secretaryPeople,
+                // dateStart);
         } 
-        count = Convert.ToInt32(initialDataRows2[0].Split(';')[21]);
-        generateProtocol.GenerateSecondProtocol(count
-            ,"09.02.07 Информационные системы и программирование"
-            ,mainPeople
-            ,deputyPeople
-            ,Peoples()
-            ,students
-            ,8
-            ,0
-            ,0
-            ,secretaryPeople,
-            dateStart);
+        count = Convert.ToInt32(initialDataRows2[0].Split(';')[22]);
+        // generateProtocol.GenerateSecondProtocol(count
+        //     ,"09.02.07 Информационные системы и программирование"
+        //     ,mainPeople
+        //     ,deputyPeople
+        //     ,Peoples()
+        //     ,students
+        //     ,8
+        //     ,0
+        //     ,0
+        //     ,secretaryPeople,
+        //     dateStart);
         
-        generateProtocol.FourthProtocol(1
-            ,"09.02.07 Информационные системы и программирование"
-            ,mainPeople
-            ,deputyPeople
-            ,Peoples()
-            ,secretaryPeople
-            ,8
-            ,0
-            ,0,
-            dateStart);
+        // generateProtocol.FourthProtocol(1
+        //     ,"09.02.07 Информационные системы и программирование"
+        //     ,mainPeople
+        //     ,deputyPeople
+        //     ,Peoples()
+        //     ,secretaryPeople
+        //     ,8
+        //     ,0
+        //     ,0,
+        //     dateStart);
         var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
             .GetMessageBoxStandardWindow("Поздравляю!", "Протоколы сгенерированы!");
         messageBoxStandardWindow.Show();

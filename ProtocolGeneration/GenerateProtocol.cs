@@ -1893,27 +1893,7 @@ public class GenerateProtocol
             .FontSize(6)
             .Font("Times New Roman");
 
-        paragraph5.AppendLine("Государственная экзаменационная комиссия постановляет: ")
-            .FontSize(12)
-            .Font("Times New Roman");
-
-        paragraph5.AppendLine("Студент(ка)      ")
-            .FontSize(12)
-            .Font("Times New Roman");
-
-        paragraph5.Append($"{student.FullName}")
-            .FontSize(12)
-            .Font("Times New Roman")
-            .UnderlineColor(Color.Black);
-
-        paragraph5.Append("\n\t\t\t\tФ.И.О.")
-            .FontSize(6)
-            .Font("Times New Roman");
-
-        paragraph5.AppendLine("по итогам государственной аттестации получил оценку")
-            .FontSize(12)
-            .Font("Times New Roman");
-
+       
         paragraph5.AppendLine("Присвоить студенту(ке)\t")
             .Font("Times New Roman")
             .FontSize(12);
