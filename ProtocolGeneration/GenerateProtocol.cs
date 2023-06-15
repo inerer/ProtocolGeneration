@@ -713,17 +713,10 @@ public class GenerateProtocol
 
         Paragraph paragraph7 = document.InsertParagraph();
         
-        paragraph7.AppendLine(
-                "Экзаменационная комиссия решила признать, что студент сдал государственный экзамен с оценкой")
-            .Bold()
-            .FontSize(12)
-            .Font("Times New Roman");
-        paragraph1.Append("лвфалjashjwqeihashuwhgsadgwqy")
-            .UnderlineColor(Color.Black)
-            .Color(Color.White);
+        
         
         Paragraph paragraph10 = document.InsertParagraph();
-        paragraph10.AppendLine("Перевод полученного колечиства баллов в оценку")
+        paragraph10.AppendLine("Перевод полученного количества баллов в оценку")
             .Font("Times New Roman")
             .FontSize(12)
             .Alignment = Alignment.right;
@@ -890,15 +883,11 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
         
-        paragraph8.Append("")
+        paragraph8.Append("единогласно")
             .Font("Times New Roman")
             .FontSize(12)
             .UnderlineColor(Color.Black);
-        
-        paragraph8.Append("лвфалjashjwqeihashuwhg")
-            .UnderlineColor(Color.Black)
-            .Color(Color.White);
-        
+
         Paragraph paragraph9 = document.InsertParagraph();
 
         Paragraph paragraph11 = document.InsertParagraph();
@@ -1077,6 +1066,8 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
 
+        paragraph20.AppendLine();
+
         paragraph20.AppendLine($"На тему: \t«{student.Theme}»")
             .FontSize(12)
             .Font("Times New Roman")
@@ -1136,7 +1127,7 @@ public class GenerateProtocol
         
         Paragraph paragraph5 = document.InsertParagraph();
 
-        paragraph5.SpacingLine(18);
+        //paragraph5.SpacingLine(18);
         
         
         paragraph5.AppendLine("Члены ГЭК: ")
@@ -1262,7 +1253,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .UnderlineColor(Color.Black);
 
-        paragraph5.Append("\n\t\tФ.И.О.")
+        paragraph5.Append("\n\t\t\t     Ф.И.О.")
             .FontSize(6)
             .Font("Times New Roman");
 
@@ -1379,9 +1370,6 @@ public class GenerateProtocol
             .FontSize(12)
             .UnderlineColor(Color.Black);
         
-        paragraph8.Append("лвфалjashjwqeihashuwhgsadgwqy")
-            .UnderlineColor(Color.Black)
-            .Color(Color.White);
         paragraph8.AppendLine();
         paragraph8.InsertHorizontalLine(HorizontalBorderPosition.bottom, BorderStyle.Tcbs_single, 6, 1 , Color.Black);
         
@@ -1828,10 +1816,7 @@ public class GenerateProtocol
                 .UnderlineColor(Color.Black)
                 .Font("Times New Roman")
                 .Alignment = Alignment.left;
-            paragraph5.Append("psdaodsadasjdkas")
-                .Color(Color.White)
-                .UnderlineColor(Color.Black);
-            
+
             paragraph5.Append("\n\t\t\t\t\t             (Ф.И.О., должность)")
                 .Font("Times New Roman")
                 .FontSize(6)
@@ -1857,16 +1842,32 @@ public class GenerateProtocol
             .FontSize(12)
             .Font("Times New Roman");
 
-        paragraph5.Append($"{student.VKRWordGrade}")
-            .FontSize(12)
-            .Font("Times New Roman")
-            .UnderlineColor(Color.Black);
+        if (student.VKRGrade == 3)
+        {
+            paragraph5.Append($"{student.VKRWordGrade}")
+                .FontSize(12)
+                .Font("Times New Roman")
+                .UnderlineColor(Color.Black);
 
-        paragraph5.Append("\n\t\t\t\t\t\t\t\t\t                    (цифрой,прописью)")
-            .Font("Times New Roman")
-            .FontSize(6);
+            paragraph5.Append("\n(цифрой,прописью)")
+                .Font("Times New Roman")
+                .FontSize(6);
+        }
+        else
+        {
+            paragraph5.Append($"{student.VKRWordGrade}")
+                .FontSize(12)
+                .Font("Times New Roman")
+                .UnderlineColor(Color.Black);
 
-        paragraph5.AppendLine($"{student.Date}")
+            paragraph5.Append("\n\t\t\t\t\t\t\t\t\t                  (цифрой,прописью)")
+                .Font("Times New Roman")
+                .FontSize(6);
+        }
+
+        
+
+        paragraph5.AppendLine($"{student.Date} ")
             .FontSize(12)
             .Font("Times New Roman")
             .UnderlineColor(Color.Black);
@@ -1884,13 +1885,17 @@ public class GenerateProtocol
             .FontSize(6)
             .Font("Times New Roman");
 
-        paragraph5.AppendLine($"{student.DemoDate}")
+        paragraph5.AppendLine($"{student.DemoDate} ")
             .FontSize(12)
             .Font("Times New Roman")
             .UnderlineColor(Color.Black);
 
         paragraph5.Append("\n(дата сдачи ДЭ)")
             .FontSize(6)
+            .Font("Times New Roman");
+
+        paragraph5.AppendLine("Государственная экзаменационная комиссия постановляет:")
+            .FontSize(12)
             .Font("Times New Roman");
 
        
@@ -1921,7 +1926,7 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .UnderlineColor(Color.Black);
 
-        paragraph5.AppendLine("Выдать диплом о среднем профессиональном образовании")
+        paragraph5.AppendLine("Выдать диплом о среднем профессиональном образовании ")
             .FontSize(12)
             .Font("Times New Roman");
 
@@ -1979,14 +1984,11 @@ public class GenerateProtocol
             .Font("Times New Roman")
             .FontSize(12);
         
-        paragraph8.Append(" о")
+        paragraph8.Append("единогласно")
             .Font("Times New Roman")
             .FontSize(12)
             .UnderlineColor(Color.Black);
         
-        paragraph8.Append("лвфалjashjwqeihashuwhgsadgwqy")
-            .UnderlineColor(Color.Black)
-            .Color(Color.White);
         
         Paragraph paragraph9 = document.InsertParagraph();
         
@@ -2009,6 +2011,9 @@ public class GenerateProtocol
             .UnderlineColor(Color.Black);
         
         paragraph11.InsertHorizontalLine(HorizontalBorderPosition.bottom, BorderStyle.Tcbs_single, 6, 1, Color.Black);
+        
+        paragraph11.InsertHorizontalLine(HorizontalBorderPosition.bottom, BorderStyle.Tcbs_single, 6, 1, Color.Black);
+
 
         Paragraph paragraph12 = document.InsertParagraph();
 

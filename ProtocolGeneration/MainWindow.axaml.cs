@@ -54,8 +54,6 @@ public partial class MainWindow : Window
     {
         var generateProtocol = new GenerateProtocol();
         List<Student> students = new List<Student>();
-       
-
         // _generateProtocol.GenerateFirstProtocol(1, "09.02.07 Информационные системы и программирование", mainPeople, secondPeople, peoples, students, 8, 0, 0, people );
         // _generateProtocol.ThirdProtocol(1, "09.02.07 Информационные системы и программировани", student, mainPeople, secondPeople, peoples, 8, 0, 0 , people);
         // _generateProtocol.FourthProtocol(1,"09.02.07 Информационные системы и программировани", mainPeople, secondPeople, peoples, people, 8, 0, 0 );
@@ -91,8 +89,8 @@ public partial class MainWindow : Window
         {
             Student student = new Student()
             {
-                FirstName = item.Split(';')[0],
-                LastName = item.Split(';')[1],
+                LastName = item.Split(';')[0],
+                FirstName = item.Split(';')[1],
                 MiddleName = item.Split(';')[2],
                 Ball = decimal.Parse(item.Split(';')[3]),
                 CountList = int.Parse(item.Split(';')[4]),
@@ -127,27 +125,27 @@ public partial class MainWindow : Window
                 dateStart);
             count++;
             
-                // generateProtocol.FifthProtocol(count, 
-                // "09.02.07 Информационные системы и программирование",
-                // mainPeople,
-                // deputyPeople,
-                // Peoples(),
-                // student,
-                // secretaryPeople,
-                // dateStart);
+                 generateProtocol.FifthProtocol(count, 
+                 "09.02.07 Информационные системы и программирование",
+                 mainPeople,
+                 deputyPeople,
+                 Peoples(),
+                 student,
+                 secretaryPeople,
+                 dateStart);
         } 
         count = Convert.ToInt32(initialDataRows2[0].Split(';')[22]);
-        // generateProtocol.GenerateSecondProtocol(count
-        //     ,"09.02.07 Информационные системы и программирование"
-        //     ,mainPeople
-        //     ,deputyPeople
-        //     ,Peoples()
-        //     ,students
-        //     ,8
-        //     ,0
-        //     ,0
-        //     ,secretaryPeople,
-        //     dateStart);
+         generateProtocol.GenerateSecondProtocol(count
+             ,"09.02.07 Информационные системы и программирование"
+             ,mainPeople
+             ,deputyPeople
+             ,Peoples()
+             ,students
+             ,8
+             ,0
+             ,0
+             ,secretaryPeople,
+              dateStart);
         
         // generateProtocol.FourthProtocol(1
         //     ,"09.02.07 Информационные системы и программирование"
